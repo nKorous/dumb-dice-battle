@@ -1,0 +1,11 @@
+{
+  "name": "dice-wars",
+  "version": "1.0.0",
+  "description": "A game of 'random' dice throws and maybe a winner",
+  "main": "main.js",
+  "author": "n.korous",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
