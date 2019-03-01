@@ -8,12 +8,14 @@ let score2 = 0
 const rollDice = (e) => {
   const view = e.target.parentElement
   const child = view.children[3]
+  const r = randNum()
 
-  let r = randNum()
   battle.push({name: view.id, number: r})
-  const n = battle.filter(d => d.name === view.id)
 
+  const n = battle.filter(d => d.name === view.id)
   child.innerHTML = n[0].number
+
+  e.target.disabled = true
 
   checkScore()
 }
@@ -32,25 +34,44 @@ const clearBattle = () => {
   battle = [];
   document.getElementById('rolled1').innerHTML = 'not rolled'
   document.getElementById('rolled2').innerHTML = 'not rolled'
-  if(winner) 
-  { 
-    updateScore(winner)
-    document.getElementById(winner).style.border = '2px solid black' 
-  }
+  
+  //Methods
+  unDisableButtons()
+  updateScore(winner)
+  setBorderToDefault()
 }
+
 
 const updateScore = (winner) => {
   if(winner === 'player1') score1 += 1
   else if(winner === 'player2') score2 += 1
 
-  document.getElementById('player1Score').innerHTML = score1
-  document.getElementById('player2Score').innerHTML = score2
+  setScore()
 }
 
 const clearScore = () => {
   score1 = 0
   score2 = 0
   winner = ''
+
+  //methods
+  clearBattle()
+  setScore()
+  setBorderToDefault()
+}
+
+const unDisableButtons = () => {
+  const buttons = document.getElementsByName('rollButton')
+  buttons[0].disabled = false
+  buttons[1].disabled = false
+}
+
+const setBorderToDefault=() => {
+  document.getElementById('player1').style.border = '2px solid black' 
+  document.getElementById('player2').style.border = '2px solid black' 
+}
+
+const setScore = () => {
   document.getElementById('player1Score').innerHTML = score1
   document.getElementById('player2Score').innerHTML = score2
 }
