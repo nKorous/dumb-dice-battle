@@ -11,7 +11,7 @@
 <body>
   <div id='player1' class="card">
     <h1>Player 1</h1>
-    <button class='rollDice' onclick={rollDice(event)}>Click to Roll</button>
+    <button class='rollDice' name='rollButton' onclick={rollDice(event)}>Click to Roll</button>
     <br />
     <a id='rolled1' class='roll'>not rolled</a>
     <div class='score' id='player1Score'>0</div>
@@ -24,7 +24,7 @@
 
   <div id='player2' name='p2' class="card">
     <h1>Player 2</h1>
-    <button class='rollDice' onclick={rollDice(event)}>Click to Roll</button>
+    <button class='rollDice' name='rollButton' onclick={rollDice(event)}>Click to Roll</button>
     <br />
     <a id='rolled2' class='roll'>not rolled</a>
     <div class='score' id='player2Score'>0</div>
